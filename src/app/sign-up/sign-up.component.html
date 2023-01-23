@@ -29,8 +29,8 @@
     <fieldset>
         <label for="password-user">Password</label>
         <input id="password-user" name="password-user" [(ngModel)]="user['password']" #password="ngModel" required>
-        <div>
-        <span *ngIf="password.errors && signUp.submitted">Le mot de passe est nécessaire</span>
+        <div *ngIf="password.errors && signUp.submitted">
+        <span *ngIf="password.errors['required']">Le mot de passe est nécessaire</span>
         </div>
     </fieldset>
     <button type="submit">Submit</button>
