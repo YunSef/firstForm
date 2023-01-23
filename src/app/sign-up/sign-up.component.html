@@ -1,0 +1,37 @@
+<form  #signUp="ngForm"(ngSubmit)="signUp.valid && onSubmit()">
+    <fieldset>
+        <label for="email-user" >Email</label>
+        <input id="email-user" name="email-user" type="email" [(ngModel)]="user['email']" #email="ngModel" required email>
+        <div *ngIf="email.errors && signUp.submitted">
+            <span *ngIf="email.errors['required']">Le mail est requis</span>
+            <span *ngIf="email.errors['email']">Le Mail doit etre au format mail</span>
+          </div>
+    </fieldset>
+    <fieldset>
+        <label for="firstName-user">Prénom</label>
+        <input id="firstName-user" name="firstName-user" type="text" [(ngModel)]="user['firstName']" #firstName='ngModel' required minlength="3" maxlength="15">
+        <div *ngIf="firstName.errors && signUp.submitted">
+            <span *ngIf="firstName.errors['required']">Le prénom est requis</span>
+            <span *ngIf="firstName.errors['minlength']">Le prénom doit comporter au moins 3 caractères</span>
+            <span *ngIf="firstName.errors['maxlength']">Le prénom doit comporter au plus 15 cractères</span>
+          </div>
+    
+    </fieldset>
+    <fieldset>
+        <label for="lastName-user">Nom</label>
+        <input id="lastName" name="lastName-user" type="text" [(ngModel)]="user['lastName']" #lastName="ngModel" required minlength="3" maxlength="15">
+        <div *ngIf="lastName.errors && signUp.submitted">
+            <span *ngIf="lastName.errors['required']">Le Nom est requis</span>
+            <span *ngIf="lastName.errors['minlength']">Le Nom doit comporter au moins 3 caractères</span>
+            <span *ngIf="lastName.errors['maxlength']">Le Nom doit comporter au plus 15 cractères</span>
+          </div>
+    </fieldset>
+    <fieldset>
+        <label for="password-user">Password</label>
+        <input id="password-user" name="password-user" [(ngModel)]="user['password']" #password="ngModel" required>
+        <div>
+        <span *ngIf="password.errors && signUp.submitted">Le mot de passe est nécessaire</span>
+        </div>
+    </fieldset>
+    <button type="submit">Submit</button>
+</form>
